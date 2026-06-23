@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Support - Book Of Destiny</title>
+
+  <style>
+    :root {
+      --bg-primary: #080912;
+      --bg-secondary: #111320;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text-primary: #f8f3ff;
+      --text-secondary: #c8bfd8;
+      --accent: #b889ff;
+      --gold: #f4d58d;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(127, 90, 240, 0.28), transparent 35%),
+        radial-gradient(circle at top right, rgba(244, 213, 141, 0.14), transparent 30%),
+        linear-gradient(180deg, #080912 0%, #111320 55%, #080912 100%);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.45;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 80px 80px, 130px 130px;
+      background-position: 0 0, 40px 60px;
+      z-index: 0;
+    }
+
+    .container {
+      width: min(880px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      color: #100b1f;
+      box-shadow: 0 0 28px rgba(184, 137, 255, 0.5);
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    nav a:hover { color: var(--text-primary); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .language-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+    }
+
+    .language-switcher button {
+      border: 0;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-secondary);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .language-switcher button:hover,
+    .language-switcher button.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-primary);
+    }
+
+    main { padding: 64px 0 96px; }
+
+    .support-card {
+      padding: 48px;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at top, rgba(184, 137, 255, 0.16), transparent 40%),
+        var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(18px);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(40px, 6vw, 64px);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      background: linear-gradient(135deg, #ffffff, #c8a7ff 45%, #f4d58d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      color: var(--gold);
+      margin-bottom: 36px;
+      font-size: 15px;
+    }
+
+    h2 {
+      margin-top: 36px;
+      margin-bottom: 12px;
+      font-size: 24px;
+      color: #ffffff;
+    }
+
+    p, li {
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+
+    ul { padding-left: 22px; }
+
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 14px 20px;
+      border-radius: 16px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #7f5af0);
+      box-shadow: 0 12px 36px rgba(127, 90, 240, 0.38);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    footer {
+      padding: 36px 0;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.46);
+      font-size: 14px;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        align-items: flex-start;
+        gap: 18px;
+      }
+
+      .nav-actions { gap: 10px; }
+
+      nav {
+        gap: 14px;
+        font-size: 13px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .support-card { padding: 32px 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stars"></div>
+
+  <header class="container">
+    <a href="index.html" data-lang-link class="logo">
+      <span class="logo-icon">✦</span>
+      <span data-i18n="app.name">Book Of Destiny</span>
+    </a>
+
+    <div class="nav-actions">
+      <nav>
+        <a href="index.html" data-lang-link data-i18n="nav.home">Home</a>
+        <a href="privacy.html" data-lang-link data-i18n="nav.privacy">Privacy</a>
+        <a href="support.html" data-lang-link data-i18n="nav.support">Support</a>
+        <a href="index.html#contact" data-lang-link data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="language-switcher" aria-label="Language switcher">
+        <button type="button" data-lang-button="en">EN</button>
+        <button type="button" data-lang-button="vi">VI</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="support-card">
+      <h1 data-i18n="support.title">Support</h1>
+      <div class="subtitle" data-i18n="support.subtitle">Need help with Book Of Destiny?</div>
+
+      <p data-i18n="support.intro">
+        If you have questions, feedback, or need help while using Book Of Destiny, please contact us by email.
+      </p>
+
+      <h2 data-i18n="support.section1.title">How to contact support</h2>
+      <p data-i18n="support.section1.body">
+        Send an email describing your issue, your device model, iOS version, and the steps that caused the problem.
+      </p>
+
+      <div class="button-row">
+        <a class="button" href="mailto:huyha.app.dev@gmail.com">huyha.app.dev@gmail.com</a>
+      </div>
+
+      <h2 data-i18n="support.section2.title">Helpful information to include</h2>
+      <ul>
+        <li data-i18n="support.info.1">What you were trying to do</li>
+        <li data-i18n="support.info.2">What happened instead</li>
+        <li data-i18n="support.info.3">A screenshot or screen recording if available</li>
+        <li data-i18n="support.info.4">Your app version and iOS version</li>
+      </ul>
+
+      <h2 data-i18n="support.section3.title">Privacy</h2>
+      <p data-i18n="support.section3.body">
+        Please do not include sensitive personal information in your support email unless it is necessary for your request.
+      </p>
+
+      <div class="button-row">
+        <a class="button" href="index.html" data-lang-link data-i18n="support.backHome">Back to Home</a>
+        <a class="button" href="privacy.html" data-lang-link data-i18n="support.privacy">Privacy Policy</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="container">
+    <span data-i18n="footer.copyright">© 2026 Book Of Destiny. Made with mystery and stardust.</span>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "page.title": "Support - Book Of Destiny",
+        "app.name": "Book Of Destiny",
+        "nav.home": "Home",
+        "nav.privacy": "Privacy",
+        "nav.support": "Support",
+        "nav.contact": "Contact",
+        "support.title": "Support",
+        "support.subtitle": "Need help with Book Of Destiny?",
+        "support.intro": "If you have questions, feedback, or need help while using Book Of Destiny, please contact us by email.",
+        "support.section1.title": "How to contact support",
+        "support.section1.body": "Send an email describing your issue, your device model, iOS version, and the steps that caused the problem.",
+        "support.section2.title": "Helpful information to include",
+        "support.info.1": "What you were trying to do",
+        "support.info.2": "What happened instead",
+        "support.info.3": "A screenshot or screen recording if available",
+        "support.info.4": "Your app version and iOS version",
+        "support.section3.title": "Privacy",
+        "support.section3.body": "Please do not include sensitive personal information in your support email unless it is necessary for your request.",
+        "support.backHome": "Back to Home",
+        "support.privacy": "Privacy Policy",
+        "footer.copyright": "© 2026 Book Of Destiny. Made with mystery and stardust."
+      },
+      vi: {
+        "page.title": "Hỗ trợ - Book Of Destiny",
+        "app.name": "Book Of Destiny",
+        "nav.home": "Trang chủ",
+        "nav.privacy": "Quyền riêng tư",
+        "nav.support": "Hỗ trợ",
+        "nav.contact": "Liên hệ",
+        "support.title": "Hỗ trợ",
+        "support.subtitle": "Bạn cần hỗ trợ về Book Of Destiny?",
+        "support.intro": "Nếu bạn có câu hỏi, góp ý hoặc cần trợ giúp khi sử dụng Book Of Destiny, vui lòng liên hệ với chúng tôi qua email.",
+        "support.section1.title": "Cách liên hệ hỗ trợ",
+        "support.section1.body": "Hãy gửi email mô tả vấn đề của bạn, model thiết bị, phiên bản iOS và các bước gây ra lỗi.",
+        "support.section2.title": "Thông tin nên gửi kèm",
+        "support.info.1": "Bạn đang muốn thực hiện thao tác gì",
+        "support.info.2": "Điều gì đã xảy ra thay vì kết quả mong muốn",
+        "support.info.3": "Ảnh chụp màn hình hoặc video quay màn hình nếu có",
+        "support.info.4": "Phiên bản ứng dụng và phiên bản iOS của bạn",
+        "support.section3.title": "Quyền riêng tư",
+        "support.section3.body": "Vui lòng không gửi thông tin cá nhân nhạy cảm trong email hỗ trợ trừ khi điều đó thật sự cần thiết cho yêu cầu của bạn.",
+        "support.backHome": "Quay về trang chủ",
+        "support.privacy": "Chính sách quyền riêng tư",
+        "footer.copyright": "© 2026 Book Of Destiny. Được tạo nên từ bí ẩn và ánh sao."
+      }
+    };
+
+    const supportedLanguages = ["en", "vi"];
+
+    function getLanguage() {
+      const params = new URLSearchParams(window.location.search);
+      const lang = params.get("lang");
+      return supportedLanguages.includes(lang) ? lang : "en";
+    }
+
+    function applyTranslations() {
+      const lang = getLanguage();
+      const dictionary = translations[lang];
+
+      document.documentElement.lang = lang;
+      document.title = dictionary["page.title"];
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (dictionary[key]) {
+          element.textContent = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll("[data-lang-link]").forEach((link) => {
+        const url = new URL(link.getAttribute("href"), window.location.href);
+        url.searchParams.set("lang", lang);
+        link.setAttribute("href", `${url.pathname.split("/").pop()}${url.search}${url.hash}`);
+      });
+
+      document.querySelectorAll("[data-lang-button]").forEach((button) => {
+        const buttonLang = button.getAttribute("data-lang-button");
+        button.classList.toggle("active", buttonLang === lang);
+        button.setAttribute("aria-pressed", buttonLang === lang ? "true" : "false");
+      });
+    }
+
+    function changeLanguage(lang) {
+      if (!supportedLanguages.includes(lang)) { return; }
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", lang);
+      window.location.href = `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+    }
+
+    document.querySelectorAll("[data-lang-button]").forEach((button) => {
+      button.addEventListener("click", () => {
+        changeLanguage(button.getAttribute("data-lang-button"));
+      });
+    });
+
+    applyTranslations();
+  </script>
+</body>
+</html>

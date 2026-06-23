@@ -96,6 +96,43 @@
       color: var(--text-primary);
     }
 
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .language-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+    }
+
+    .language-switcher button {
+      border: 0;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-secondary);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .language-switcher button:hover,
+    .language-switcher button.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-primary);
+    }
+
     main {
       padding: 64px 0 96px;
     }
@@ -161,6 +198,10 @@
     }
 
     @media (max-width: 720px) {
+      .nav-actions {
+        gap: 10px;
+      }
+
       nav {
         gap: 14px;
         font-size: 13px;
@@ -179,79 +220,87 @@
   <header class="container">
     <a href="index.html" class="logo">
       <span class="logo-icon">✦</span>
-      <span>Book Of Destiny</span>
+      <span data-i18n="app.name">Book Of Destiny</span>
     </a>
 
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
+    <div class="nav-actions">
+      <nav>
+        <a href="index.html" data-lang-link data-i18n="nav.home">Home</a>
+        <a href="privacy.html" data-lang-link data-i18n="nav.privacy">Privacy</a>
+        <a href="support.html" data-lang-link data-i18n="nav.support">Support</a>
+        <a href="index.html#contact" data-lang-link data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="language-switcher" aria-label="Language switcher">
+        <button type="button" data-lang-button="en">EN</button>
+        <button type="button" data-lang-button="vi">VI</button>
+      </div>
+    </div>
   </header>
 
   <main class="container">
     <div class="privacy-card">
-      <h1>Privacy Policy</h1>
-      <div class="updated-date">Last updated: June 23, 2026</div>
+      <h1 data-i18n="privacy.title">Privacy Policy</h1>
+      <div class="updated-date" data-i18n="privacy.updated">Last updated: June 23, 2026</div>
 
-      <p>
+      <p data-i18n="privacy.intro">
         This Privacy Policy explains how Book Of Destiny handles your information.
         By using the app, you agree to the terms described in this policy.
       </p>
 
-      <h2>1. Information We Collect</h2>
-      <p>
+      <h2 data-i18n="privacy.section1.title">1. Information We Collect</h2>
+      <p data-i18n="privacy.section1.body">
         Book Of Destiny is designed as a simple entertainment and reflection app.
         We do not require users to create an account, and we do not collect personal
         information such as your name, email address, phone number, or location.
       </p>
 
-      <h2>2. Questions You Enter</h2>
-      <p>
+      <h2 data-i18n="privacy.section2.title">2. Questions You Enter</h2>
+      <p data-i18n="privacy.section2.body">
         The questions you type in the app are used only to provide the app experience.
         They are not used to personally identify you.
       </p>
 
-      <h2>3. How the App Works</h2>
-      <p>
+      <h2 data-i18n="privacy.section3.title">3. How the App Works</h2>
+      <p data-i18n="privacy.section3.body">
         Book Of Destiny provides random pre-written answers for entertainment and
         self-reflection purposes. The answers should not be considered professional,
         legal, medical, financial, or psychological advice.
       </p>
 
-      <h2>4. Third-Party Services</h2>
-      <p>
+      <h2 data-i18n="privacy.section4.title">4. Third-Party Services</h2>
+      <p data-i18n="privacy.section4.body">
         At this time, Book Of Destiny does not use third-party analytics, advertising,
         or tracking services.
       </p>
 
-      <h2>5. Data Sharing</h2>
-      <p>
+      <h2 data-i18n="privacy.section5.title">5. Data Sharing</h2>
+      <p data-i18n="privacy.section5.body">
         We do not sell, rent, trade, or share your personal information with third
         parties.
       </p>
 
-      <h2>6. Children’s Privacy</h2>
-      <p>
+      <h2 data-i18n="privacy.section6.title">6. Children’s Privacy</h2>
+      <p data-i18n="privacy.section6.body">
         Book Of Destiny is not intended to knowingly collect personal information
         from children. If you believe that a child has provided personal information,
         please contact us so we can take appropriate action.
       </p>
 
-      <h2>7. Data Security</h2>
-      <p>
+      <h2 data-i18n="privacy.section7.title">7. Data Security</h2>
+      <p data-i18n="privacy.section7.body">
         Since the app does not require account registration or collect personal
         information, we do not store personal user data on our servers.
       </p>
 
-      <h2>8. Changes to This Privacy Policy</h2>
-      <p>
+      <h2 data-i18n="privacy.section8.title">8. Changes to This Privacy Policy</h2>
+      <p data-i18n="privacy.section8.body">
         We may update this Privacy Policy from time to time. Any changes will be
         posted on this page with an updated date.
       </p>
 
-      <h2>9. Contact Us</h2>
-      <p>
+      <h2 data-i18n="privacy.section9.title">9. Contact Us</h2>
+      <p data-i18n="privacy.section9.body">
         If you have any questions about this Privacy Policy, please contact us at:
       </p>
 
@@ -260,12 +309,130 @@
         <a href="mailto:huyha.app.dev@gmail.com">huyha.app.dev@gmail.com</a>
       </p>
 
-      <a class="button" href="index.html">Back to Home</a>
+      <a class="button" href="index.html" data-lang-link data-i18n="privacy.backHome">Back to Home</a>
     </div>
   </main>
 
   <footer class="container">
-    © 2026 Book Of Destiny. Made with mystery and stardust.
+    <span data-i18n="footer.copyright">© 2026 Book Of Destiny. Made with mystery and stardust.</span>
   </footer>
+
+  <script>
+    const translations = {
+      en: {
+        "page.title": "Privacy Policy - Book Of Destiny",
+        "app.name": "Book Of Destiny",
+        "nav.home": "Home",
+        "nav.privacy": "Privacy",
+        "nav.support": "Support",
+        "nav.contact": "Contact",
+        "privacy.title": "Privacy Policy",
+        "privacy.updated": "Last updated: June 23, 2026",
+        "privacy.intro": "This Privacy Policy explains how Book Of Destiny handles your information. By using the app, you agree to the terms described in this policy.",
+        "privacy.section1.title": "1. Information We Collect",
+        "privacy.section1.body": "Book Of Destiny is designed as a simple entertainment and reflection app. We do not require users to create an account, and we do not collect personal information such as your name, email address, phone number, or location.",
+        "privacy.section2.title": "2. Questions You Enter",
+        "privacy.section2.body": "The questions you type in the app are used only to provide the app experience. They are not used to personally identify you.",
+        "privacy.section3.title": "3. How the App Works",
+        "privacy.section3.body": "Book Of Destiny provides random pre-written answers for entertainment and self-reflection purposes. The answers should not be considered professional, legal, medical, financial, or psychological advice.",
+        "privacy.section4.title": "4. Third-Party Services",
+        "privacy.section4.body": "At this time, Book Of Destiny does not use third-party analytics, advertising, or tracking services.",
+        "privacy.section5.title": "5. Data Sharing",
+        "privacy.section5.body": "We do not sell, rent, trade, or share your personal information with third parties.",
+        "privacy.section6.title": "6. Children’s Privacy",
+        "privacy.section6.body": "Book Of Destiny is not intended to knowingly collect personal information from children. If you believe that a child has provided personal information, please contact us so we can take appropriate action.",
+        "privacy.section7.title": "7. Data Security",
+        "privacy.section7.body": "Since the app does not require account registration or collect personal information, we do not store personal user data on our servers.",
+        "privacy.section8.title": "8. Changes to This Privacy Policy",
+        "privacy.section8.body": "We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date.",
+        "privacy.section9.title": "9. Contact Us",
+        "privacy.section9.body": "If you have any questions about this Privacy Policy, please contact us at:",
+        "privacy.backHome": "Back to Home",
+        "footer.copyright": "© 2026 Book Of Destiny. Made with mystery and stardust."
+      },
+      vi: {
+        "page.title": "Chính sách quyền riêng tư - Book Of Destiny",
+        "app.name": "Book Of Destiny",
+        "nav.home": "Trang chủ",
+        "nav.privacy": "Quyền riêng tư",
+        "nav.support": "Hỗ trợ",
+        "nav.contact": "Liên hệ",
+        "privacy.title": "Chính sách quyền riêng tư",
+        "privacy.updated": "Cập nhật lần cuối: ngày 23 tháng 6 năm 2026",
+        "privacy.intro": "Chính sách quyền riêng tư này giải thích cách Book Of Destiny xử lý thông tin của bạn. Khi sử dụng ứng dụng, bạn đồng ý với các điều khoản được mô tả trong chính sách này.",
+        "privacy.section1.title": "1. Thông tin chúng tôi thu thập",
+        "privacy.section1.body": "Book Of Destiny được thiết kế như một ứng dụng giải trí và suy ngẫm đơn giản. Chúng tôi không yêu cầu người dùng tạo tài khoản và không thu thập thông tin cá nhân như tên, địa chỉ email, số điện thoại hoặc vị trí của bạn.",
+        "privacy.section2.title": "2. Câu hỏi bạn nhập",
+        "privacy.section2.body": "Các câu hỏi bạn nhập trong ứng dụng chỉ được sử dụng để mang lại trải nghiệm trong ứng dụng. Chúng không được dùng để nhận dạng cá nhân bạn.",
+        "privacy.section3.title": "3. Cách ứng dụng hoạt động",
+        "privacy.section3.body": "Book Of Destiny cung cấp các câu trả lời ngẫu nhiên đã được viết sẵn nhằm mục đích giải trí và tự suy ngẫm. Các câu trả lời không nên được xem là lời khuyên chuyên môn, pháp lý, y tế, tài chính hoặc tâm lý.",
+        "privacy.section4.title": "4. Dịch vụ bên thứ ba",
+        "privacy.section4.body": "Hiện tại, Book Of Destiny không sử dụng dịch vụ phân tích, quảng cáo hoặc theo dõi của bên thứ ba.",
+        "privacy.section5.title": "5. Chia sẻ dữ liệu",
+        "privacy.section5.body": "Chúng tôi không bán, cho thuê, trao đổi hoặc chia sẻ thông tin cá nhân của bạn với bên thứ ba.",
+        "privacy.section6.title": "6. Quyền riêng tư của trẻ em",
+        "privacy.section6.body": "Book Of Destiny không có chủ đích thu thập thông tin cá nhân từ trẻ em. Nếu bạn cho rằng trẻ em đã cung cấp thông tin cá nhân, vui lòng liên hệ với chúng tôi để chúng tôi có thể thực hiện hành động phù hợp.",
+        "privacy.section7.title": "7. Bảo mật dữ liệu",
+        "privacy.section7.body": "Vì ứng dụng không yêu cầu đăng ký tài khoản hoặc thu thập thông tin cá nhân, chúng tôi không lưu trữ dữ liệu cá nhân của người dùng trên máy chủ của mình.",
+        "privacy.section8.title": "8. Thay đổi chính sách quyền riêng tư này",
+        "privacy.section8.body": "Chúng tôi có thể cập nhật Chính sách quyền riêng tư này theo thời gian. Mọi thay đổi sẽ được đăng trên trang này kèm ngày cập nhật mới.",
+        "privacy.section9.title": "9. Liên hệ với chúng tôi",
+        "privacy.section9.body": "Nếu bạn có bất kỳ câu hỏi nào về Chính sách quyền riêng tư này, vui lòng liên hệ với chúng tôi tại:",
+        "privacy.backHome": "Quay về trang chủ",
+        "footer.copyright": "© 2026 Book Of Destiny. Được tạo nên từ bí ẩn và ánh sao."
+      }
+    };
+
+    const supportedLanguages = ["en", "vi"];
+
+    function getLanguage() {
+      const params = new URLSearchParams(window.location.search);
+      const lang = params.get("lang");
+      return supportedLanguages.includes(lang) ? lang : "en";
+    }
+
+    function applyTranslations() {
+      const lang = getLanguage();
+      const dictionary = translations[lang];
+
+      document.documentElement.lang = lang;
+      document.title = dictionary["page.title"];
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (dictionary[key]) {
+          element.textContent = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll("[data-lang-link]").forEach((link) => {
+        const url = new URL(link.getAttribute("href"), window.location.href);
+        url.searchParams.set("lang", lang);
+        link.setAttribute("href", `${url.pathname.split("/").pop()}${url.search}${url.hash}`);
+      });
+
+      document.querySelectorAll("[data-lang-button]").forEach((button) => {
+        const buttonLang = button.getAttribute("data-lang-button");
+        button.classList.toggle("active", buttonLang === lang);
+        button.setAttribute("aria-pressed", buttonLang === lang ? "true" : "false");
+      });
+    }
+
+    function changeLanguage(lang) {
+      if (!supportedLanguages.includes(lang)) { return; }
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", lang);
+      window.location.href = `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+    }
+
+    document.querySelectorAll("[data-lang-button]").forEach((button) => {
+      button.addEventListener("click", () => {
+        changeLanguage(button.getAttribute("data-lang-button"));
+      });
+    });
+
+    applyTranslations();
+  </script>
+
 </body>
 </html>

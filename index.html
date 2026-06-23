@@ -101,6 +101,43 @@
       color: var(--text-primary);
     }
 
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .language-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+    }
+
+    .language-switcher button {
+      border: 0;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--text-secondary);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .language-switcher button:hover,
+    .language-switcher button.active {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text-primary);
+    }
+
     .hero {
       min-height: calc(100vh - 96px);
       display: grid;
@@ -354,6 +391,10 @@
     }
 
     @media (max-width: 860px) {
+      .nav-actions {
+        gap: 10px;
+      }
+
       nav {
         display: none;
       }
@@ -396,50 +437,58 @@
     <header class="container">
       <a href="#" class="logo">
         <span class="logo-icon">✦</span>
-        <span>Book Of Destiny</span>
+        <span data-i18n="app.name">Book Of Destiny</span>
       </a>
 
-      <nav>
-        <a href="#about">About</a>
-        <a href="#features">Features</a>
-        <a href="#questions">Questions</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="nav-actions">
+        <nav>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#features" data-i18n="nav.features">Features</a>
+          <a href="#questions" data-i18n="nav.questions">Questions</a>
+          <a href="privacy.html" data-lang-link data-i18n="nav.privacy">Privacy</a>
+          <a href="support.html" data-lang-link data-i18n="nav.support">Support</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </nav>
+
+        <div class="language-switcher" aria-label="Language switcher">
+          <button type="button" data-lang-button="en">EN</button>
+          <button type="button" data-lang-button="vi">VI</button>
+        </div>
+      </div>
     </header>
 
     <main>
       <section class="hero container">
         <div>
-          <div class="badge">✦ The universe is listening</div>
+          <div class="badge" data-i18n="hero.badge">✦ The universe is listening</div>
 
-          <h1>
+          <h1 data-i18n-html="hero.title">
             <span class="gradient-text">Book Of</span><br />
             Destiny
           </h1>
 
-          <p>
+          <p data-i18n="hero.description">
             When your heart is uncertain, open the Book Of Destiny.
             Ask your question, hold your intention, and let the universe
             reveal a mysterious sign made just for this moment.
           </p>
 
           <div class="hero-actions">
-            <a href="#contact" class="button button-primary">Contact Me</a>
-            <a href="#about" class="button button-secondary">Discover the App</a>
+            <a href="#contact" class="button button-primary" data-i18n="hero.contactButton">Contact Me</a>
+            <a href="#about" class="button button-secondary" data-i18n="hero.discoverButton">Discover the App</a>
           </div>
         </div>
 
         <div class="phone-card">
           <div class="phone-screen">
-            <h2>The Book Of<br />Destiny</h2>
+            <h2 data-i18n-html="phone.title">The Book Of<br />Destiny</h2>
             <div class="moon"></div>
-            <p>
+            <p data-i18n="phone.description">
               Type your question below.
               The universe is listening.
             </p>
 
-            <div class="question-pill">
+            <div class="question-pill" data-i18n="phone.question">
               “Will everything be okay in the end?”
             </div>
           </div>
@@ -448,8 +497,8 @@
 
       <section id="about" class="container">
         <div class="section-header">
-          <h2>A mystical answer for every uncertain heart</h2>
-          <p>
+          <h2 data-i18n="about.title">A mystical answer for every uncertain heart</h2>
+          <p data-i18n="about.description">
             Book Of Destiny is a simple yet emotional experience where users
             write a question and receive a random answer from a collection of
             destiny-inspired messages.
@@ -459,8 +508,8 @@
 
       <section id="features" class="container">
         <div class="section-header">
-          <h2>Designed for quiet moments</h2>
-          <p>
+          <h2 data-i18n="features.title">Designed for quiet moments</h2>
+          <p data-i18n="features.description">
             A soft, mysterious, and calming app experience for users who are
             looking for a sign, a little courage, or a gentle answer.
           </p>
@@ -469,8 +518,8 @@
         <div class="grid">
           <div class="card">
             <div class="card-icon">🌙</div>
-            <h3>Mystical Mood</h3>
-            <p>
+            <h3 data-i18n="feature.mood.title">Mystical Mood</h3>
+            <p data-i18n="feature.mood.description">
               Dark cosmic visuals, glowing details, and dreamy copy create
               a magical atmosphere from the first screen.
             </p>
@@ -478,8 +527,8 @@
 
           <div class="card">
             <div class="card-icon">🔮</div>
-            <h3>Random Destiny</h3>
-            <p>
+            <h3 data-i18n="feature.random.title">Random Destiny</h3>
+            <p data-i18n="feature.random.description">
               Users ask a question and receive one of many prepared answers,
               making every reveal feel personal and unexpected.
             </p>
@@ -487,8 +536,8 @@
 
           <div class="card">
             <div class="card-icon">✨</div>
-            <h3>Simple Experience</h3>
-            <p>
+            <h3 data-i18n="feature.simple.title">Simple Experience</h3>
+            <p data-i18n="feature.simple.description">
               No complicated flow. Just ask, hold, reveal, and reflect on the
               sign that appears.
             </p>
@@ -498,27 +547,27 @@
 
       <section id="questions" class="container">
         <div class="section-header">
-          <h2>Questions users may ask</h2>
-          <p>
+          <h2 data-i18n="questions.title">Questions users may ask</h2>
+          <p data-i18n="questions.description">
             From love to life direction, Book Of Destiny gives users a gentle
             space to wonder.
           </p>
         </div>
 
         <div class="questions">
-          <div class="question">Should I confess my feelings to my crush?</div>
-          <div class="question">Should I keep trying one more time?</div>
-          <div class="question">Will everything be okay in the end?</div>
-          <div class="question">Am I on the right path?</div>
-          <div class="question">Is what I’m waiting for truly worth it?</div>
-          <div class="question">Is this the sign I have been looking for?</div>
+          <div class="question" data-i18n="sampleQuestion.1">Should I confess my feelings to my crush?</div>
+          <div class="question" data-i18n="sampleQuestion.2">Should I keep trying one more time?</div>
+          <div class="question" data-i18n="sampleQuestion.3">Will everything be okay in the end?</div>
+          <div class="question" data-i18n="sampleQuestion.4">Am I on the right path?</div>
+          <div class="question" data-i18n="sampleQuestion.5">Is what I’m waiting for truly worth it?</div>
+          <div class="question" data-i18n="sampleQuestion.6">Is this the sign I have been looking for?</div>
         </div>
       </section>
 
       <section id="contact" class="container">
         <div class="contact">
-          <h2>Contact Me</h2>
-          <p>
+          <h2 data-i18n="contact.title">Contact Me</h2>
+          <p data-i18n="contact.description">
             Have feedback, questions, or need support for Book Of Destiny?
             Please contact me via email.
           </p>
@@ -533,12 +582,161 @@
     </main>
 
     <footer class="container">
-      © 2026 Book Of Destiny. Made with mystery and stardust.
+      <span data-i18n="footer.copyright">© 2026 Book Of Destiny. Made with mystery and stardust.</span>
       <br />
-      <a href="privacy.html" style="color: rgba(255,255,255,0.62); text-decoration: underline;">
+      <a href="privacy.html" data-lang-link style="color: rgba(255,255,255,0.62); text-decoration: underline;" data-i18n="footer.privacy">
         Privacy Policy
+      </a>
+      <span style="color: rgba(255,255,255,0.34);"> · </span>
+      <a href="support.html" data-lang-link style="color: rgba(255,255,255,0.62); text-decoration: underline;" data-i18n="footer.support">
+        Support
       </a>
     </footer>
   </div>
+
+  <script>
+    const translations = {
+      en: {
+        "page.title": "Book Of Destiny",
+        "app.name": "Book Of Destiny",
+        "nav.about": "About",
+        "nav.features": "Features",
+        "nav.questions": "Questions",
+        "nav.privacy": "Privacy",
+        "nav.support": "Support",
+        "nav.contact": "Contact",
+        "hero.badge": "✦ The universe is listening",
+        "hero.title": "<span class=\"gradient-text\">Book Of</span><br />Destiny",
+        "hero.description": "When your heart is uncertain, open the Book Of Destiny. Ask your question, hold your intention, and let the universe reveal a mysterious sign made just for this moment.",
+        "hero.contactButton": "Contact Me",
+        "hero.discoverButton": "Discover the App",
+        "phone.title": "The Book Of<br />Destiny",
+        "phone.description": "Type your question below. The universe is listening.",
+        "phone.question": "“Will everything be okay in the end?”",
+        "about.title": "A mystical answer for every uncertain heart",
+        "about.description": "Book Of Destiny is a simple yet emotional experience where users write a question and receive a random answer from a collection of destiny-inspired messages.",
+        "features.title": "Designed for quiet moments",
+        "features.description": "A soft, mysterious, and calming app experience for users who are looking for a sign, a little courage, or a gentle answer.",
+        "feature.mood.title": "Mystical Mood",
+        "feature.mood.description": "Dark cosmic visuals, glowing details, and dreamy copy create a magical atmosphere from the first screen.",
+        "feature.random.title": "Random Destiny",
+        "feature.random.description": "Users ask a question and receive one of many prepared answers, making every reveal feel personal and unexpected.",
+        "feature.simple.title": "Simple Experience",
+        "feature.simple.description": "No complicated flow. Just ask, hold, reveal, and reflect on the sign that appears.",
+        "questions.title": "Questions users may ask",
+        "questions.description": "From love to life direction, Book Of Destiny gives users a gentle space to wonder.",
+        "sampleQuestion.1": "Should I confess my feelings to my crush?",
+        "sampleQuestion.2": "Should I keep trying one more time?",
+        "sampleQuestion.3": "Will everything be okay in the end?",
+        "sampleQuestion.4": "Am I on the right path?",
+        "sampleQuestion.5": "Is what I’m waiting for truly worth it?",
+        "sampleQuestion.6": "Is this the sign I have been looking for?",
+        "contact.title": "Contact Me",
+        "contact.description": "Have feedback, questions, or need support for Book Of Destiny? Please contact me via email.",
+        "footer.copyright": "© 2026 Book Of Destiny. Made with mystery and stardust.",
+        "footer.privacy": "Privacy Policy",
+        "footer.support": "Support"
+      },
+      vi: {
+        "page.title": "Book Of Destiny",
+        "app.name": "Book Of Destiny",
+        "nav.about": "Giới thiệu",
+        "nav.features": "Tính năng",
+        "nav.questions": "Câu hỏi",
+        "nav.privacy": "Quyền riêng tư",
+        "nav.support": "Hỗ trợ",
+        "nav.contact": "Liên hệ",
+        "hero.badge": "✦ Vũ trụ đang lắng nghe",
+        "hero.title": "<span class=\"gradient-text\">Book Of</span><br />Destiny",
+        "hero.description": "Khi trái tim bạn còn phân vân, hãy mở Book Of Destiny. Đặt câu hỏi, giữ lấy điều bạn thật sự nghĩ đến, và để vũ trụ hé lộ một tín hiệu bí ẩn dành riêng cho khoảnh khắc này.",
+        "hero.contactButton": "Liên hệ tôi",
+        "hero.discoverButton": "Khám phá ứng dụng",
+        "phone.title": "The Book Of<br />Destiny",
+        "phone.description": "Nhập câu hỏi của bạn bên dưới. Vũ trụ đang lắng nghe.",
+        "phone.question": "“Liệu cuối cùng mọi chuyện rồi sẽ ổn chứ?”",
+        "about.title": "Một câu trả lời huyền bí cho những trái tim còn do dự",
+        "about.description": "Book Of Destiny là một trải nghiệm đơn giản nhưng giàu cảm xúc, nơi người dùng viết câu hỏi và nhận một câu trả lời ngẫu nhiên từ bộ thông điệp lấy cảm hứng từ định mệnh.",
+        "features.title": "Được thiết kế cho những khoảnh khắc tĩnh lặng",
+        "features.description": "Một trải nghiệm nhẹ nhàng, bí ẩn và thư thái dành cho những ai đang tìm kiếm một dấu hiệu, một chút can đảm, hoặc một câu trả lời dịu dàng.",
+        "feature.mood.title": "Không khí huyền bí",
+        "feature.mood.description": "Hình ảnh vũ trụ tối màu, những chi tiết phát sáng và lời dẫn mơ màng tạo nên bầu không khí ma thuật ngay từ màn hình đầu tiên.",
+        "feature.random.title": "Định mệnh ngẫu nhiên",
+        "feature.random.description": "Người dùng đặt câu hỏi và nhận một trong nhiều câu trả lời đã chuẩn bị sẵn, khiến mỗi lần hé lộ đều có cảm giác riêng tư và bất ngờ.",
+        "feature.simple.title": "Trải nghiệm đơn giản",
+        "feature.simple.description": "Không có quy trình phức tạp. Chỉ cần hỏi, giữ, hé lộ và suy ngẫm về tín hiệu xuất hiện.",
+        "questions.title": "Những câu hỏi người dùng có thể đặt",
+        "questions.description": "Từ tình yêu đến hướng đi trong cuộc sống, Book Of Destiny mang đến một không gian dịu dàng để người dùng tự hỏi.",
+        "sampleQuestion.1": "Mình có nên thổ lộ tình cảm với người mình thích không?",
+        "sampleQuestion.2": "Mình có nên cố gắng thêm một lần nữa không?",
+        "sampleQuestion.3": "Liệu cuối cùng mọi chuyện rồi sẽ ổn chứ?",
+        "sampleQuestion.4": "Mình có đang đi đúng hướng không?",
+        "sampleQuestion.5": "Điều mình đang chờ đợi có thật sự xứng đáng không?",
+        "sampleQuestion.6": "Đây có phải là dấu hiệu mình đang tìm kiếm không?",
+        "contact.title": "Liên hệ tôi",
+        "contact.description": "Nếu bạn có góp ý, câu hỏi hoặc cần hỗ trợ về Book Of Destiny, vui lòng liên hệ với tôi qua email.",
+        "footer.copyright": "© 2026 Book Of Destiny. Được tạo nên từ bí ẩn và ánh sao.",
+        "footer.privacy": "Chính sách quyền riêng tư",
+        "footer.support": "Hỗ trợ"
+      }
+    };
+
+    const supportedLanguages = ["en", "vi"];
+
+    function getLanguage() {
+      const params = new URLSearchParams(window.location.search);
+      const lang = params.get("lang");
+      return supportedLanguages.includes(lang) ? lang : "en";
+    }
+
+    function applyTranslations() {
+      const lang = getLanguage();
+      const dictionary = translations[lang];
+
+      document.documentElement.lang = lang;
+      document.title = dictionary["page.title"];
+
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        if (dictionary[key]) {
+          element.textContent = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll("[data-i18n-html]").forEach((element) => {
+        const key = element.getAttribute("data-i18n-html");
+        if (dictionary[key]) {
+          element.innerHTML = dictionary[key];
+        }
+      });
+
+      document.querySelectorAll("[data-lang-link]").forEach((link) => {
+        const url = new URL(link.getAttribute("href"), window.location.href);
+        url.searchParams.set("lang", lang);
+        link.setAttribute("href", `${url.pathname.split("/").pop()}${url.search}${url.hash}`);
+      });
+
+      document.querySelectorAll("[data-lang-button]").forEach((button) => {
+        const buttonLang = button.getAttribute("data-lang-button");
+        button.classList.toggle("active", buttonLang === lang);
+        button.setAttribute("aria-pressed", buttonLang === lang ? "true" : "false");
+      });
+    }
+
+    function changeLanguage(lang) {
+      if (!supportedLanguages.includes(lang)) { return; }
+      const url = new URL(window.location.href);
+      url.searchParams.set("lang", lang);
+      window.location.href = `${url.pathname.split("/").pop()}${url.search}${url.hash}`;
+    }
+
+    document.querySelectorAll("[data-lang-button]").forEach((button) => {
+      button.addEventListener("click", () => {
+        changeLanguage(button.getAttribute("data-lang-button"));
+      });
+    });
+
+    applyTranslations();
+  </script>
+
 </body>
 </html>
